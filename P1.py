@@ -32,8 +32,6 @@ with gzip.open(args.f, 'rt') as fqfp:
             for nt,score in enumerate(line.strip()):
                 quality_score_sums[nt] += convert_phred(score)
 
-# mean quality scores for ech position acrtoss all reads
-#mean_quality_scores = [qsum/num_records for qsum in quality_score_sums]
 outfile = open(args.f + "_mps.tsv","w")
 outfile.write("\t".join([str(x/num_records) for x in quality_score_sums]))
 
