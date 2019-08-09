@@ -15,9 +15,13 @@
 
 
 # SCRIPT BELOW
-#./P1.py -f emp_files/1294_S1_L008_R1_001.fastq.gz -nbp 101
-#./P1.py -f emp_files/1294_S1_L008_R2_001.fastq.gz -nbp 8
-#./P1.py -f emp_files/1294_S1_L008_R3_001.fastq.gz -nbp 8
-#./P1.py -f emp_files/1294_S1_L008_R4_001.fastq.gz -nbp 101
+# /usr/bin/time -v./P1.py -f emp_files/1294_S1_L008_R1_001.fastq.gz -nbp 101
+# /usr/bin/time -v./P1.py -f emp_files/1294_S1_L008_R2_001.fastq.gz -nbp 8
+# /usr/bin/time -v ./P1.py -f emp_files/1294_S1_L008_R3_001.fastq.gz -nbp 8
+# /usr/bin/time -v ./P1.py -f emp_files/1294_S1_L008_R4_001.fastq.gz -nbp 101
 
-/usr/bin/time -v zcat emp_files/1294_S1_L008_R[2-3]* | awk 'NR%4==2' | grep N | wc -l > countN_Index.txt
+# /usr/bin/time -v zcat emp_files/1294_S1_L008_R[2-3]* | awk 'NR%4==2' | grep N | wc -l > countN_Index.txt
+
+/usr/bin/time -v ./P2.py -fq emp_files/1294_S1_L008_R* -fi emp_files/indexes.txt
+
+

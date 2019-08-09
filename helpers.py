@@ -3,9 +3,8 @@ helpers.py
 
 Author: Jared Galloway
 
-This file contains some helpful functions to demultiplex 
+This file contains some helpful functions to demultiplex a fastq file.
 '''
-
 
 def reverse_compliment(sequence):
     '''
@@ -18,11 +17,10 @@ def reverse_compliment(sequence):
         compliment += map_nucleotide_dict[nucleotide]
     return ''.join(list(reversed(compliment)))
 
-
 def fastq_records_iterator(file_pointer):
     '''
     This function will take in a file pointer 
-    and return an iterator containing which yeilds four lines of a file
+    and returns an iterator which yeilds four lines of a file
     (stripped of \n) in a list of strings. 
     '''
     while True:
