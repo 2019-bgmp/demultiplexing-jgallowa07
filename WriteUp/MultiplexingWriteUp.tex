@@ -89,10 +89,15 @@ for \textit{not valid} indices, we put the read in an undefined fastq file.
 \textbf{Output}: For this, I'm going to make two output fastq files for each valid index 
 for each one of the paired end reads. And two files for undefined and two files for hopped.
 
-\textbf{Test Files}: I'm goiung to make four test files which have three respective reads 
+\textbf{Test Files}: I'm going to make four test files which have three respective reads 
 in each, one for each of the catagories mentioned above. 
 
+(bgmp\_py3) n221 13:30 [demultiplexing-jgallowa07] \$ ./P2.py -fq test\_files/R[1-4]* -fi emp\_files/indexes.txt 
+Number of hopped reads = 1
+Number of undefined reads = 1
+Number of valid reads = 1
 
+\textbf{Algorithm \& High-Level functions} : Found in psuedo\_code/ folder
 
 
 
