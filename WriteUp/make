@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# xelatex --interaction=batchmode Exec_sum.tex;open Exec_sum.pdf
+xelatex --interaction=batchmode MultiplexingWriteUp.tex
+open MultiplexingWriteUp.pdf
+
