@@ -46,38 +46,36 @@
 \end{tabular}
 \end{center}
 
- \item
-
 \begin{description}
 
- \item
+    \item
 
-\begin{figure}[h!!!!]
-	\center{
-	\includegraphics[width=0.8\textwidth]{../pos_dist_plots/position_mean_quality.pdf}
-	}
-	\caption{
-	\label{fig:my-label1} Distribution of average quality score R1}
-\end{figure}
+    \begin{figure}[h!!!!]
+        \center{
+        \includegraphics[width=0.8\textwidth]{../pos_dist_plots/position_mean_quality.pdf}
+        }
+        \caption{
+        \label{fig:my-label1} Distribution of average quality score R1}
+    \end{figure}
 
- \item
+     \item
 
-Due to the first two biologcal reads -- for both R1 and R2 -- 
-are quite low $\approx < 36$, I would set the cutoff for 36, to make 
-sure we are getting high quality biolocial reads.
+    Due to the first two biologcal reads -- for both R1 and R2 -- 
+    are quite low $\approx < 36$, I would set the cutoff for 36, to make 
+    sure we are getting high quality biolocial reads.
 
-\newpage
-\item
+    \newpage
+    \item
 
-To find the total number of N's within the two index reads, 
-I used the following bash command
+    To find the total number of N's within the two index reads, 
+    I used the following bash command
 
-\begin{center}
 
-zcat emp\_files/1294\_S1\_L008\_R[2-3]* | awk 'NR\%4==2' | grep N | wc -l > countN\_Index.txt
+    zcat emp\_files/1294\_S1\_L008\_R[2-3]* | awk 'NR\%4==2' | grep N | wc -l > countN\_Index.txt
 
-\end{center}
-
-\begin{description}
+\end{description}
 \end{enumerate}
+
+\section*{Part 2}
+
 \end{document}
