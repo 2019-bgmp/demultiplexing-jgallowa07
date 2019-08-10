@@ -6,7 +6,7 @@ import gzip
 import numpy as np
 from helpers import *
 
-QUALITY_CUTOFF = 0
+QUALITY_CUTOFF = 30
 
 # TODO Create nice description
 parser = argparse.ArgumentParser(description='This file is python code for')
@@ -42,6 +42,11 @@ fp_dict["R2_undefined"] = open(f"{demult_dir}R2_undefined.fastq","w")
 # Put record iterators in a list using function from helpers.py
 fi = [fastq_records_iterator(gzip.open(args.fq[i],"rt")) for i in range(4)]
 
+# initialize some counters to print outcome
+num_hopped = 0
+num_undefined = 0
+num_valid = 0
+
 # Now, lets iterate through fragments
 for r1_read_r, r1_idx_r, r2_idx_r, r2_read_r in zip(fi[0],fi[1],fi[2],fi[3]):
 
@@ -66,11 +71,21 @@ for r1_read_r, r1_idx_r, r2_idx_r, r2_read_r in zip(fi[0],fi[1],fi[2],fi[3]):
         if r1_idx == r2_idx:
             fp_dict[f"R1_{r1_idx}"].write("\n".join(r1_read_r)+"\n")
             fp_dict[f"R2_{r2_idx}"].write("\n".join(r2_read_r)+"\n")
+            num_valid += 1
         # if they don't match, and are valid, then they hopped 
         else:
             fp_dict["R1_hopped"].write("\n".join(r1_read_r)+"\n")
             fp_dict["R2_hopped"].write("\n".join(r2_read_r)+"\n")
+            num_hopped += 1
     # If either of the indices are not valid, then we catagorize as undefined 
     else:
         fp_dict["R1_undefined"].write("\n".join(r1_read_r)+"\n")
         fp_dict["R2_undefined"].write("\n".join(r2_read_r)+"\n")
+        num_undefined += 1
+
+print(f"Number of hopped reads = {num_hopped}")
+print(f"Number of undefined reads = {num_undefined}")
+print(f"Number of valid reads = {num_valid}")
+
+
+

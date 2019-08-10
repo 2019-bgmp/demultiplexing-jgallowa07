@@ -54,43 +54,19 @@
 
 \begin{figure}[h!!!!]
 	\center{
-	\includegraphics[width=0.8\textwidth]{../pos_dist_plots/tsv_hist1.pdf}
+	\includegraphics[width=0.8\textwidth]{../pos_dist_plots/position_mean_quality.pdf}
 	}
 	\caption{
 	\label{fig:my-label1} Distribution of average quality score R1}
 \end{figure}
 
-\begin{figure}[h!!!!]
-	\center{
-	\includegraphics[width=0.8\textwidth]{../pos_dist_plots/tsv_hist2.pdf}
-	}
-	\caption{
-	\label{fig:my-label}  Distribution of average quality score R2 }
-\end{figure}
-
-\begin{figure}[h!!!!]
-	\center{
-	\includegraphics[width=0.8\textwidth]{../pos_dist_plots/tsv_hist3.pdf}
-	}
-	\caption{
-	\label{fig:my-label}  Distribution of average quality score R3}
-\end{figure}
-
-\begin{figure}[h!!!!]
-	\center{
-	\includegraphics[width=0.8\textwidth]{../pos_dist_plots/tsv_hist4.pdf}
-	}
-	\caption{
-	\label{fig:my-label}  Distribution of average quality score R4}
-\end{figure}
-
-\newpage
  \item
 
 Due to the first two biologcal reads -- for both R1 and R2 -- 
-are quite low $\approx < 36$, I would set the cutoff for 37, to make 
+are quite low $\approx < 36$, I would set the cutoff for 36, to make 
 sure we are getting high quality biolocial reads.
 
+\newpage
 \item
 
 To find the total number of N's within the two index reads, 
@@ -98,7 +74,7 @@ I used the following bash command
 
 \begin{center}
 
-zcat emp\_files/1294\_S1\_L008\_R[2-3]* | awk 'NR\%4==2' | grep N | wc -l > countN_Index.txt
+zcat emp\_files/1294\_S1\_L008\_R[2-3]* | awk 'NR\%4==2' | grep N | wc -l > countN\_Index.txt
 
 \end{center}
 

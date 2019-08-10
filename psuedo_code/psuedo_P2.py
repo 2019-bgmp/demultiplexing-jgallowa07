@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+"""
+P2 Psuedo Code
+
+This script 
+
+"""
 import argparse
 from collections import defaultdict
 import sys
