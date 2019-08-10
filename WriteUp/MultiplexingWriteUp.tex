@@ -78,4 +78,31 @@
 
 \section*{Part 2}
 
+\textbf{Problem}: this problem is defined by seperating out reads on a flow cell based upon
+the reported barcode. This means that both index reads from each pair must match and be high
+quality in order to be succefully demultiplexed. 
+If the Index pairs are 
+\textit{valid} (meaning above the quality cutoff, and exist in pre-defined set of indices)  
+yet they do match for both pairs of a given read, then we put them in a hopped fastq file.
+for \textit{not valid} indices, we put the read in an undefined fastq file.
+
+\textbf{Output}: For this, I'm going to make two output fastq files for each valid index 
+for each one of the paired end reads. And two files for undefined and two files for hopped.
+
+\textbf{Test Files}: I'm goiung to make four test files which have three respective reads 
+in each, one for each of the catagories mentioned above. 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
 \end{document}
