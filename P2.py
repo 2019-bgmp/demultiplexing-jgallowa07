@@ -6,7 +6,8 @@ import gzip
 import numpy as np
 from helpers import *
 
-QUALITY_CUTOFF = 30
+#QUALITY_CUTOFF = 30
+QUALITY_CUTOFF = 0
 
 # TODO Create nice description
 parser = argparse.ArgumentParser(description='This file is python code for')
@@ -24,7 +25,7 @@ args = parser.parse_args()
 # {R1/R2_INDEX : file pointer for that index}
 fp_dict = {}
 ref_indices = []
-demult_dir = "demultiplexed_files/"
+demult_dir = "demultiplexed_files_test/"
 indices = open(args.fi,"r")
 header = indices.readline()
 for line in indices:
