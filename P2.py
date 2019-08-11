@@ -63,8 +63,8 @@ for r1_read_r, r1_idx_r, r2_idx_r, r2_read_r in zip(fi[0],fi[1],fi[2],fi[3]):
     r2_idx_valid = is_valid(r2_idx, ref_indices, r2_idx_qs, QUALITY_CUTOFF)
 
     # modify the headers of both records to include the indices
-    r1_read_r[0] = f"{r1_read_r[0]}_{r1_idx}_{r2_idx}"
-    r2_read_r[0] = f"{r2_read_r[0]}_{r1_idx}_{r2_idx}"
+    r1_read_r[0] = f"{r1_read_r[0]}_{r1_idx}_{r2_idx_r[1]}"
+    r2_read_r[0] = f"{r2_read_r[0]}_{r1_idx}_{r2_idx_r[1]}"
 
     #If both indices are valid, then they're either index hopped of valid
     if r1_idx_valid & r2_idx_valid:
