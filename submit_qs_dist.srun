@@ -1,9 +1,9 @@
 #!/bin/bash
 #SBATCH --account=bgmp          ### SLURM account which will be charged for the job
 #SBATCH --partition=bgmp        ### Partition (like a queue in PBS)
-#SBATCH --job-name=demultiplexing_distribution      ### Job Name
-#SBATCH --output=slurm_output/dm_dist.out         ### File in which to store job output
-#SBATCH --error=slurm_output/dm_dist.err          ### File in which to store job error messages
+#SBATCH --job-name=demultiplexing      ### Job Name
+#SBATCH --output=slurm_output/dm_dist2.out         ### File in which to store job output
+#SBATCH --error=slurm_output/dm_dist2.err          ### File in which to store job error messages
 #SBATCH --time=1-00:00:00       ### Wall clock time limit in Days-HH:MM:SS
 #SBATCH --nodes=1               ### Node count required for the job (usually 1)
 #SBATCH --ntasks-per-node=1     ### Nuber of tasks to be launched per Node (usually 1)

@@ -25,7 +25,7 @@ args = parser.parse_args()
 # {R1/R2_INDEX : file pointer for that index}
 fp_dict = {}
 ref_indices = []
-demult_dir = "demultiplexed_files_test/"
+demult_dir = "demultiplexed_files_2/"
 indices = open(args.fi,"r")
 header = indices.readline()
 for line in indices:
