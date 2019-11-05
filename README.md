@@ -32,4 +32,45 @@ optional arguments:
                    before runtime.
 ```
 
+An example run for this might look like:
+
+```
+/usr/bin/time -v ./demultiplex.py -fq ../emp_files/*.gz -bar ../emp_files/indexes.txt -out ../demultiplexed_files/
+```
+
+This output all demultiplexed files names with R1 and R2 followed by the barcode for the resepective file.
+This script writes percentages and counts for each barcode to stdout like so:
+
+```
+Number of hopped reads = 707740
+Number of undefined reads = 30783962
+Number of valid reads = 331755033
+
+Sample Barcode  Total # Records Percentage of Total
+GTAGCGTA    8119243     2.447
+CGATCGAT    5604966     1.689
+GATCAAGG    6587100     1.986
+AACAGCGA    8872034     2.674
+TAGCCATG    10629633    3.204
+CGGTAATC    5064906     1.527
+CTCTGGAT    34976387    10.543
+TACCGGAT    76363857    23.018
+```
+
+Once the files have been demultiplexed, you can visualize which barcode hopped the most with the script found in `scripts/plot_heatmap_from_hopped.py` like so
+
+```
+/usr/bin/time -v ./plot_heatmap_from_hopped.py -fq ../demultiplexed_files/R1_hopped.fastq -bar ../emp_files/indexes.txt
+```
+
+to produce a plot that looks like:
+
+
+
+
+
+
+
+
+
 
