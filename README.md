@@ -18,8 +18,8 @@ ample   group   treatment   index   index sequence
 
 Given these, the script found in `scripts/demultiplex.py` has the following usage:
 
-```bash
-age: demultiplex.py [-h] [-fq FQ [FQ ...]] [-bar BAR] [-out OUT]
+```
+usage: demultiplex.py [-h] [-fq FQ [FQ ...]] [-bar BAR] [-out OUT] [-qc QC]
 
 This file is python code for
 
@@ -30,6 +30,9 @@ optional arguments:
   -bar BAR         properly formatted list of valid barcodes to demultiplex.
   -out OUT         output directory for which to write you files - must exist
                    before runtime.
+  -qc QC           the quality cutoff for which an otherwise valid index read
+                   mean quality score must exceed to be considered valid.
+                   Default is 0
 ```
 
 An example run for this might look like:
