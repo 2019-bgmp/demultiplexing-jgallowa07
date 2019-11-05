@@ -6,10 +6,7 @@ import gzip
 import numpy as np
 from helpers import *
 
-#QUALITY_CUTOFF = 30
-QUALITY_CUTOFF = 0
 
-# TODO Create nice description
 parser = argparse.ArgumentParser(description='This file is python code for')
 
 parser.add_argument('-fq', type=str, nargs='+',
@@ -20,6 +17,9 @@ parser.add_argument('-bar', type=str, help=' properly formatted \
     list of valid barcodes to demultiplex.')
 parser.add_argument('-out', type=str, help=' output directory \
     for which to write you files - must exist before runtime.')
+parser.add_argument('-qc', type=int, default=0, help='the quality cutoff for which \
+    an otherwise valid index read mean quality score must exceed to be considered valid. \
+    Default is 0')
 args = parser.parse_args()
 
 # read in indices, and create a dictionary, 
@@ -63,8 +63,8 @@ for r1_read_r, r1_idx_r, r2_idx_r, r2_read_r in zip(fi[0],fi[1],fi[2],fi[3]):
     r2_idx_qs = r2_idx_r[3]
 
     # first, find out if the indices are valid
-    r1_idx_valid = is_valid(r1_idx, ref_indices, r1_idx_qs, QUALITY_CUTOFF)
-    r2_idx_valid = is_valid(r2_idx, ref_indices, r2_idx_qs, QUALITY_CUTOFF)
+    r1_idx_valid = is_valid(r1_idx, ref_indices, r1_idx_qs, args.qc)
+    r2_idx_valid = is_valid(r2_idx, ref_indices, r2_idx_qs, args.qc)
 
     # modify the headers of both records to include the indices
     r1_read_r[0] = f"{r1_read_r[0]}_{r1_idx}_{r2_idx_r[1]}"
@@ -97,6 +97,6 @@ print(f"\nSample Barcode\tTotal # Records\tPercentage of Total")
 for index in index_count_dict:
     total_records = index_count_dict[index]
     percentage = round((total_records / num_valid) * 100,3)
-    print(f"{index}\t{index_count_dict[index]}\t{percentage}")
+    print(f"{index}\t{index_count_dict[index]}\t\t{percentage}")
 
 
