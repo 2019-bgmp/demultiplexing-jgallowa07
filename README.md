@@ -65,7 +65,7 @@ Once the files have been demultiplexed, you can visualize which barcode hopped t
 
 to produce a plot that looks like:
 
-
+![alt text](https://github.com/2019-bgmp/demultiplexing-jgallowa07/blob/master/plots/heatmap.pdf)
 
 
 
