@@ -63,16 +63,5 @@ Once the files have been demultiplexed, you can visualize which barcode hopped t
 /usr/bin/time -v ./plot_heatmap_from_hopped.py -fq ../demultiplexed_files/R1_hopped.fastq -bar ../emp_files/indexes.txt
 ```
 
-to produce a plot that looks like:
-
-.. image:: https://github.com/2019-bgmp/demultiplexing-jgallowa07/blob/master/plots/heatmap.pdf
-   :height: 100px
-   :width: 200 px
-   :scale: 50 %
-
-
-
-
-
-
+to produce a plot that looks like ![This](https://github.com/2019-bgmp/demultiplexing-jgallowa07/blob/master/plots/heatmap.pdf)
 
