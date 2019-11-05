@@ -17,7 +17,7 @@ parser = argparse.ArgumentParser(description='This file is python code for \
     in every read.')
 parser = argparse.ArgumentParser()
 
-parser.add_argument('-fq', type=str, help='fastq files to parse')
+parser.add_argument('-fq', type=str, help='hopped fastq file to parse.')
 parser.add_argument('-bar', type=str, help='valid barcodes')
 args = parser.parse_args()
 

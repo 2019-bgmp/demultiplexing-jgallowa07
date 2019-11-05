@@ -16,17 +16,20 @@ parser.add_argument('-fq', type=str, nargs='+',
     help='gzipped fastq files to de-multiplex \
     (should be 4: 1 forward read, 2 forward index, \
     3 reverse index, 4 reverse read)')
-parser.add_argument('-fi', type=str, help='number \
-    of base pairs in each read (or max)')
+parser.add_argument('-bar', type=str, help=' properly formatted \
+    list of valid barcodes to demultiplex.')
+parser.add_argument('-out', type=str, help=' output directory \
+    for which to write you files - must exist before runtime.')
 args = parser.parse_args()
 
 # read in indices, and create a dictionary, 
 # fp_dict defined by
 # {R1/R2_INDEX : file pointer for that index}
 fp_dict = {}
+index_count_dict = {}
 ref_indices = []
-demult_dir = "demultiplexed_files_2/"
-indices = open(args.fi,"r")
+demult_dir = args.out
+indices = open(args.bar,"r")
 header = indices.readline()
 for line in indices:
     index = line.strip().split()[4]
@@ -35,6 +38,7 @@ for line in indices:
     r2_file_pointer = open(f"{demult_dir}R2_{index}.fastq","w")
     fp_dict[f"R1_{index}"] = r1_file_pointer
     fp_dict[f"R2_{index}"] = r2_file_pointer
+    index_count_dict[f"{index}"] = 0
 fp_dict["R1_hopped"] = open(f"{demult_dir}R1_hopped.fastq","w")
 fp_dict["R2_hopped"] = open(f"{demult_dir}R2_hopped.fastq","w")
 fp_dict["R1_undefined"] = open(f"{demult_dir}R1_undefined.fastq","w")
@@ -72,6 +76,7 @@ for r1_read_r, r1_idx_r, r2_idx_r, r2_read_r in zip(fi[0],fi[1],fi[2],fi[3]):
         if r1_idx == r2_idx:
             fp_dict[f"R1_{r1_idx}"].write("\n".join(r1_read_r)+"\n")
             fp_dict[f"R2_{r2_idx}"].write("\n".join(r2_read_r)+"\n")
+            index_count_dict[f"{r1_idx}"] += 1
             num_valid += 1
         # if they don't match, and are valid, then they hopped 
         else:
@@ -84,9 +89,14 @@ for r1_read_r, r1_idx_r, r2_idx_r, r2_read_r in zip(fi[0],fi[1],fi[2],fi[3]):
         fp_dict["R2_undefined"].write("\n".join(r2_read_r)+"\n")
         num_undefined += 1
 
+# Now lets print some helpful stats.
 print(f"Number of hopped reads = {num_hopped}")
 print(f"Number of undefined reads = {num_undefined}")
 print(f"Number of valid reads = {num_valid}")
-
+print(f"\nSample Barcode\tTotal # Records\tPercentage of Total")
+for index in index_count_dict:
+    total_records = index_count_dict[index]
+    percentage = round((total_records / num_valid) * 100,3)
+    print(f"{index}\t{index_count_dict[index]}\t{percentage}")
 
 
